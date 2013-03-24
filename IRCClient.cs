@@ -55,9 +55,8 @@ namespace IRClient
             string[] cparam = cmd.Split(new char[]{' '},2);
             string command = cparam[0];
             var param = cparam.Length > 1 ? cparam[1] : "";
-            var parameters = param.Split(' ');
 
-            if (Command.Commands.ContainsKey(command)) cmd = Command.Commands[command].Apply(cmd, parameters, this);
+            if (Command.Commands.ContainsKey(command)) cmd = Command.Commands[command].Apply(cmd, param, this);
             else
             {
                 cmd = "PRIVMSG " + Channel + " :" + cmd;
@@ -65,7 +64,7 @@ namespace IRClient
 
             Writer.WriteLine(cmd);
             Writer.Flush();
-            Console.WriteLine(cmd);
+            //Console.WriteLine(cmd);
 
         }
 
@@ -74,7 +73,7 @@ namespace IRClient
             while (IsConnected)
             {
                 var data = Reader.ReadLine();
-                Console.WriteLine(data);
+                //Console.WriteLine(data);
                 var ex = data.Split(new char[] { ' ' }, 5);
 
                 if (ex[0] == "PING")
