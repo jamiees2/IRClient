@@ -8,7 +8,7 @@ namespace IRClient
 {
     class IrcBot : IrcClient
     {
-        public IrcBot(string server, int port, string nick, string name) : base(server, port, nick, name)
+        public IrcBot(string server, int port, string nick, string name, string host) : base(server, port, nick, name, host)
         {
         }
 
@@ -43,7 +43,7 @@ namespace IRClient
                             Write("NICK " + ex[4]);
                             break;
                         case "!quit":
-                            Write("QUIT " + ex[4]);
+                            Write("QUIT");
                             Disconnect();
                             break;
 

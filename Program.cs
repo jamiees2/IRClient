@@ -17,7 +17,7 @@ namespace IRClient
         {
             const string server = "irc.rizon.net";
             const int port = 6670;
-            var ircClient = new IrcBot(server, port, "finalC_fake", "finalC") {Channel = "#TS"};
+            var ircClient = new IrcBot(server, port, "Dawg", "finalC", "tal.is") {Channel = "#TS"};
             ircClient.Connect();
             new Thread(ircClient.Start).Start();
             new Thread(delegate ()
